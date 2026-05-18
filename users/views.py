@@ -39,3 +39,7 @@ class ConfirmView(generics.GenericAPIView):
             return Response({
                 "error": "Пользователь не найден"
             }, status=404)
+        except ConfirmationCode.DoesNotExist:
+            return Response({
+                "error": "Код подтверждения не найден"
+            }, status=404)
